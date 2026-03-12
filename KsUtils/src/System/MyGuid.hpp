@@ -6,13 +6,13 @@
 #include <sstream>
 #include <iomanip>
 
-#include "CrossGuidStruct.hpp"
+#include "GuidUtils/CrossGuidStruct.hpp"
 
 #ifdef _WIN32
-    #include "Win32GuidStruct.hpp"
+    #include "GuidUtils/Win32GuidStruct.hpp"
     typedef CrossGuidStruct<Win32GuidStruct>    GuidStruct;
 #else
-    #include "MyGuidStruct.hpp"
+    #include "GuidUtils/MyGuidStruct.hpp"
     typedef CrossGuidStruct<MyGuidStruct>       GuidStruct;
 #endif
 

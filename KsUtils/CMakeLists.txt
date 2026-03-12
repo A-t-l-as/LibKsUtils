@@ -15,9 +15,10 @@ add_library(KsUtils STATIC
   src/Utils/StringUtils.hpp
   src/Utils/TxtUtils.hpp
   src/System/MyGuid.hpp
-  src/System/MyGuidStruct.hpp
-  src/System/Win32GuidStruct.hpp
-  src/System/CrossGuidStruct.hpp
+  src/System/GuidUtils/CrossGuidStruct.hpp src/System/GuidUtils/MyGuidStruct.hpp src/System/GuidUtils/Win32GuidStruct.hpp
+
+
+
 
 
 
