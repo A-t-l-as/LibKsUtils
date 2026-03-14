@@ -25,7 +25,7 @@ public:
     inline void WriteBuffer(const uint8_t* arg_buff, size_t buff_len)
 	{
 		m_file_buffer.insert(m_file_buffer.end(), arg_buff, arg_buff + buff_len);
-	}
+    }
 
 	template<typename T>
 	inline void WriteValue(const T& val)

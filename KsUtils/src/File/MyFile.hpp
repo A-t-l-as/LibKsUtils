@@ -46,8 +46,9 @@ public:
 			DEBUG_PRINT
 			(
 				Mess::endl, 
-				Mess::endl, 
-				"void MyFile::SaveTo(fs::path & output_file_path, const ios_base::openmode & arg_mode):", Mess::endl, 
+				Mess::endl,
+                "void MyFile::SaveTo(fs::path & output_file_path, const ios_base::openmode & arg_mode):",
+                Mess::endl,
 				"Error while saving data - vector is empty!", Mess::endl, Mess::endl
 			);
 		}

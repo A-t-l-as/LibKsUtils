@@ -66,6 +66,12 @@ inline void ReplaceAllOccurrences(std::string& str_buffer, const std::string& se
 }
 
 
+inline bool IsNumber(const std::string& s)
+{
+    return !s.empty() && find_if(s.begin(),
+                                 s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end();
+}
+
 
 
 };
