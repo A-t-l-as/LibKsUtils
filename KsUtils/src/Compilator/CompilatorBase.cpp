@@ -211,7 +211,12 @@ void CompilatorBase::GetValuesFromString(
 }
 
 
-void CompilatorBase::WriteInstructionToBin(const string& value_type, const Enums::value_types_enum& en_value_type, const string& value)
+void CompilatorBase::WriteInstructionToBin
+(
+    const string& value_type,
+    const Enums::value_types_enum& en_value_type,
+    const string& value
+)
 {
 
     if (en_value_type == Enums::value_types_enum::e_invalid)
@@ -227,7 +232,7 @@ void CompilatorBase::WriteInstructionToBin(const string& value_type, const Enums
     }
 
     // uints
-    if (value_type.starts_with('u'))
+    if (value_type.starts_with(CompilatorValueTypes::c_prefix_u))
     {
         // uint32_t
         if (en_value_type == Enums::value_types_enum::e_uint32_t)
@@ -322,7 +327,7 @@ void CompilatorBase::WriteInstructionToBin(const string& value_type, const Enums
     }
 
 
-    if ( value_type.starts_with('i') )
+    if ( value_type.starts_with( CompilatorValueTypes::c_prefix_i ) )
     {
 
         // int32_t albo int

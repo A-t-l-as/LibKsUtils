@@ -3,6 +3,8 @@
 
 namespace CompilatorStrings
 {
+    constexpr char number_of_str[] = "number_of_";
+
     constexpr char order_str[] = "order";
 
     constexpr char order_txt_rest[] = "_order.txt";

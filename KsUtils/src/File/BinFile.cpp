@@ -81,12 +81,16 @@ void BinFile::WriteGuid(const string &guid)
 	two_bytes = static_cast<uint16_t>(stoul(guid.substr(14, 4), nullptr, Globals::hex_base));
 	this->WriteValue(two_bytes);
 
-    two_bytes = static_cast<uint16_t>(bswap16(static_cast<unsigned short>(stoul(guid.substr(19, 4), nullptr, Globals::hex_base))));
+    two_bytes =
+        static_cast<uint16_t>(bswap16(static_cast<unsigned short>(stoul(guid.substr(19, 4), nullptr, Globals::hex_base))));
+
 	this->WriteValue(two_bytes);
 
     four_bytes = static_cast<uint32_t>(bswap32(stoul(guid.substr(24, 8), nullptr, Globals::hex_base)));
 	this->WriteValue(four_bytes);
 
-    two_bytes = static_cast<uint32_t>(bswap16(static_cast<unsigned short>(stoul(guid.substr(32, 4), nullptr, Globals::hex_base))));
+    two_bytes =
+        static_cast<uint32_t>(bswap16(static_cast<unsigned short>(stoul(guid.substr(32, 4), nullptr, Globals::hex_base))));
+
 	this->WriteValue(two_bytes);
 }

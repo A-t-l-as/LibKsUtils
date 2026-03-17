@@ -119,8 +119,6 @@ public:
             StringUtils::RemoveCharFromTheString(help_str, ' ');
             StringUtils::RemoveCharFromTheString(help_str, '\n');
 
-            //CONSOLE_OUT.PrintLn("\"", help_str, "\"");
-
             const int number_of_types = 2;
             std::size_t size_of_array = A_SIZE;
 
@@ -204,8 +202,6 @@ public:
 
             StringUtils::RemoveCharFromTheString(scheme, ' ');
             StringUtils::RemoveCharFromTheString(scheme, ',');
-
-            //CONSOLE_OUT.PrintLn("\"", help_str, "\"");
 
             size_t size_of_array = 0;
 
@@ -293,8 +289,6 @@ public:
             StringUtils::RemoveCharFromTheString(help_str, ' ');
             StringUtils::RemoveCharFromTheString(help_str, '\n');
 
-            // CONSOLE_OUT.PrintLn("\"", help_str, "\"");
-
             for (std::size_t k = 0; k < size; ++k)
             {
 
@@ -380,8 +374,6 @@ public:
 
             StringUtils::RemoveCharFromTheString(help_str, ' ');
             StringUtils::RemoveCharFromTheString(help_str, '\n');
-
-            //CONSOLE_OUT.PrintLn("\"", help_str, "\"");
 
             const std::size_t temp_help_str_len = help_str.size();
             std::size_t counter = 0;
@@ -527,8 +519,6 @@ public:
             output << std::endl;
         }
     }
-
-
 
 
 

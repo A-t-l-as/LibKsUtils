@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <set>
 #include <fstream>
+#include "Compilator/CompilatorValueTypes.hpp"
 #include "Console/Console.hpp"
 #include "Utils/CppWriter.hpp"
 #include "Utils/BitsetUtils.hpp"
@@ -46,7 +47,13 @@ public:
 	}
 
     template<typename Type, std::size_t Size>
-    inline void WriteTrivialArray(int quad_count, const std::string& name, const std::array<Type, Size>& array, bool make_new_line = true)
+    inline void WriteTrivialArray
+    (
+        int quad_count,
+        const std::string& name,
+        const std::array<Type, Size>& array,
+        bool make_new_line = true
+    )
 	{
 		size_t i = 0;
         for (const Type& value : array)
@@ -70,13 +77,14 @@ public:
 
 
 	template<typename Type>
-	void WriteUniqueKeyWithConst(
+    void WriteUniqueKeyWithConst
+    (
 		int quad_count,
         const std::string& name,
 		Type& value,
         std::unordered_map<Type, std::string>& list_of_masks,
 		bool make_new_line = true
-		)
+    )
 	{
 		
 		if (list_of_masks[value] == "")
@@ -88,7 +96,7 @@ public:
 		WriteSymbol('\t', quad_count);
 		this->m_stream_data
             << sizeof(value) * Globals::byte_to_bits
-			<< "bituniquekey "
+            << CompilatorValueTypes::c_bituniquekey_type_str << " "
 			<< name
 			<< " = "
 			<< list_of_masks[value]
@@ -101,13 +109,14 @@ public:
 
 
 	template<typename T>
-	void WriteNBitMask(
+    void WriteNBitMask
+    (
 		int quadcount, 
         const std::string& name,
 		T& value, 
         const std::string& main_label,
 		std::unordered_map<uint32_t, std::string>& list_of_masks
-		)
+    )
 	{
 		std::set<std::string> masks_strings = {};
 
@@ -120,7 +129,13 @@ public:
 		WriteSymbol('\t', quadcount);
 		this->m_stream_data << "// " << main_label << std::endl;
 		WriteSymbol('\t', quadcount);
-        this->m_stream_data << sizeof(value) * Globals::byte_to_bits << "bitmask " << name << " = (";
+
+        this->m_stream_data
+            << sizeof(value) * Globals::byte_to_bits
+            << CompilatorValueTypes::c_bitmask_type_str
+            << " "
+            << name
+            << " = (";
 
 		for (int i = 0; i < digits; ++i)
 		{

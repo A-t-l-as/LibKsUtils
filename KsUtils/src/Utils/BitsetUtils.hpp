@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <string>
 #include <bitset>
+#include "Compilator/CompilatorValueTypes.hpp"
 #include "Globals.hpp"
 #include <vector>
 #include <sstream>
@@ -18,7 +19,7 @@ namespace BitsetUtils
         std::stringstream ss;
 
         for (size_t i = 0; i < Globals::byte_to_bits; ++i)
-            ss << "1bitmask " << labels[i] << " = " << bits[i] << ";" << std::endl;
+            ss << CompilatorValueTypes::c_1bitmask_type_str << " " << labels[i] << " = " << bits[i] << ";" << std::endl;
 
         return ss.str();
     }

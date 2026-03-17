@@ -34,7 +34,7 @@ public:
         index_.erase(it);
         data_.erase(data_.begin() + pos);
 
-        // Aktualizacja indeksów po usuniętym elemencie
+        // Aktualizacja indeksow po usunietym elemencie
         for (size_t i = pos; i < data_.size(); ++i)
             index_[data_[i]] = i;
 

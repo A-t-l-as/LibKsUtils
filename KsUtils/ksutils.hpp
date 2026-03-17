@@ -6,4 +6,4 @@ namespace KsUtils
     constexpr char version[] = "1.0.0";
 };
 
-#endif // KSUTILS_HPP
+#endif // !KSUTILS_HPP

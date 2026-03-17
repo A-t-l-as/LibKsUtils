@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <cstdint>
+#include "Compilator/CompilatorValueTypes.hpp"
 #include "Globals.hpp"
 #include <unordered_map>
 
@@ -16,10 +17,13 @@ namespace CppWriter
 
 		if (std::is_unsigned_v<Type>)
 		{
-			result << 'u';
+            result << CompilatorValueTypes::c_prefix_u;
 		}
 
-        result << "int" << sizeof(Type) * Globals::byte_to_bits << "_t";
+        result
+            << CompilatorValueTypes::c_int_type_str
+            << sizeof(Type) * Globals::byte_to_bits
+            << CompilatorValueTypes::c_suffix_t_str;
 
 		return result.str();
 	}
@@ -51,7 +55,7 @@ namespace CppWriter
 
     inline void WriteString(std::stringstream& ss, const std::string& name, const std::string& value, bool make_new_line = true)
     {
-        ss << "string " << name << " = \"" << value << "\";";
+        ss << CompilatorValueTypes::c_string_type_str << " " << name << " = \"" << value << "\";";
         if (make_new_line)
             ss << std::endl;
     }
@@ -73,7 +77,8 @@ namespace CppWriter
         }
 
         ss  << sizeof(value) * Globals::byte_to_bits
-            << "bituniquekey "
+            << CompilatorValueTypes::c_bituniquekey_type_str
+            << " "
             << name
             << " = "
             << list_of_masks[value]
@@ -86,14 +91,14 @@ namespace CppWriter
 
     inline void WriteGuid(std::stringstream& ss, const std::string& name, const std::string& guid, bool make_new_line = true)
     {
-        ss << "GUID " << name << " = " << guid << ";";
+        ss << CompilatorValueTypes::c_guid_type_str << " " << name << " = " << guid << ";";
         if (make_new_line)
             ss << std::endl;
     }
 
     inline void Write1BitMask(std::stringstream& ss, const std::string& name, uint8_t value)
     {
-        ss << "1bitmask " << name << " = " << value << ";" << std::endl;
+        ss << CompilatorValueTypes::c_1bitmask_type_str << " " << name << " = " << value << ";" << std::endl;
     }
 
 };

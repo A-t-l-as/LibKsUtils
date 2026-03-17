@@ -145,7 +145,8 @@ public:
 
 	inline size_t CountOccurrencesOfText(const std::string& word)
 	{
-		return Misc::CountOccurrences(reinterpret_cast<const char*>(this->m_file_buffer.data()), this->m_file_buffer.size(), word);
+        return Misc::CountOccurrences
+            (reinterpret_cast<const char*>(this->m_file_buffer.data()), this->m_file_buffer.size(), word);
 	}
 
     void LoadFrom(const std::filesystem::path& arg_file_path) override

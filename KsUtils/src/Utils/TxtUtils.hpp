@@ -104,8 +104,6 @@ static void GetArrayValues
         StringUtils::RemoveCharFromTheString(help_str, ' ');
         StringUtils::RemoveCharFromTheString(help_str, '\n');
 
-        //CONSOLE_OUT.PrintLn("\"", help_str, "\"");
-
         for (size_t i = 0; i < size_of_dst; ++i)
         {
             single_value_end_index = help_str.find(",");
@@ -344,8 +342,6 @@ static void GetVectorOfStrings
                 ++counter;
         }
 
-        //CONSOLE_OUT.PrintLn("\"", m_help_str, "\"", Mess::endl);
-
         for (std::size_t i = 0; i < counter; ++i)
         {
             single_value_end_index = m_help_str.find(",");
@@ -400,8 +396,6 @@ static void GetVectorOfStringsFromQueue
             if (help_str[i] == ',')
                 ++counter;
         }
-
-        //CONSOLE_OUT.PrintLn("\"", m_help_str, "\"", Mess::endl);
 
         for (size_t i = 0; i < counter; ++i)
         {

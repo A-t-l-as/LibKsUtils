@@ -25,6 +25,12 @@ namespace CompilatorValueTypes
 
     constexpr char c_struct_type_str[] = "struct";
 
+    constexpr char c_prefix_i = 'i';
+    constexpr char c_prefix_u = 'u';
+    constexpr char c_int_type_str[] = "int";
+    constexpr char c_suffix_t_str[] = "_t";
+
+
 	constexpr char c_int8_t_type_str[] = "int8_t";
 	constexpr char c_int8_t_arr_type_str[] = "int8_t[]";
 
@@ -40,11 +46,15 @@ namespace CompilatorValueTypes
 	constexpr char c_bool_type_str[] = "bool";
 	constexpr char c_bool_arr_type_str[] = "bool[]";
 
+    constexpr char c_bitmask_type_str[] = "bitmask";
+
 	constexpr char c_1bitmask_type_str[] = "1bitmask";
 
 	constexpr char c_32bitmask_type_str[] = "32bitmask";
 
 	constexpr char c_8bitmask_type_str[] = "8bitmask";
+
+    constexpr char c_bituniquekey_type_str[] = "bituniquekey";
 
     constexpr char c_32bituniquekey_type_str[] = "32bituniquekey";
 
