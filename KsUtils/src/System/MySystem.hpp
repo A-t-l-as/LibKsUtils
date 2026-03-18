@@ -5,11 +5,18 @@
 
 namespace MySystem
 {
-    enum FileType
+    enum class ENFileType
     {
-        t_invalid,
-        t_file,
-        t_directory
+        none,
+        file,
+        directory
+    };
+
+    enum class ENAppType
+    {
+        invalid,
+        console,
+        gui
     };
 
     inline bool CheckThatDirExists(const std::filesystem::path& arg_input_directory_path)

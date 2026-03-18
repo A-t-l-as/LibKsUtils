@@ -28,7 +28,7 @@ namespace Misc
 	}
 
     template<class T>
-    inline bool CheckAnswerWithEveryElementInVec(const T& answer, const std::vector<T>& elements)
+    inline bool CheckThatElementExistInVec(const T& answer, const std::vector<T>& elements)
     {
         for (const T& element : elements)
         {
@@ -95,9 +95,9 @@ namespace Misc
     }
 
 
-    inline void Margin(std::stringstream& output, int64_t ile)
+    inline void Margin(std::stringstream& output, int64_t count)
     {
-        for (int64_t i = 0; i < ile; ++i)
+        for (int64_t i = 0; i < count; ++i)
             output << '\t';
     }
 

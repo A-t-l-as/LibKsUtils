@@ -83,7 +83,7 @@ public:
 
 
         for (size_t i = 0; i < number_of_value_types; ++i)
-            this->m_hash_map_of_value_types_enums[std::string(value_types[i])] = static_cast<Enums::value_types_enum>(i);
+            this->m_hash_map_of_value_types_enums[std::string(value_types[i])] = static_cast<Enums::ENCompilatorValueTypes>(i);
     }
 
 
@@ -110,7 +110,7 @@ public:
         return m_list_of_masks[str];
     }
 
-    Enums::value_types_enum GetValueTypeEnFromString(const std::string& str)
+    Enums::ENCompilatorValueTypes GetValueTypeEnFromString(const std::string& str)
     {
         return m_hash_map_of_value_types_enums[str];
     }
@@ -127,7 +127,7 @@ protected:
 
     std::unordered_map<std::string, uint32_t> m_list_of_masks = {};
 
-    std::unordered_map<std::string, Enums::value_types_enum> m_hash_map_of_value_types_enums = {};
+    std::unordered_map<std::string, Enums::ENCompilatorValueTypes> m_hash_map_of_value_types_enums = {};
     std::unordered_map<std::string, bool> m_hash_map_of_boolean_values = {};
 
 };

@@ -6,12 +6,12 @@
 namespace Formats
 {
 
-    enum format
+    enum class ENFormat
     {
-        f_invalid,
-        f_cpp,
-        f_png,
-        f_hpp
+        invalid,
+        cpp,
+        png,
+        hpp
     };
 
     constexpr char tex_format_str[] = "tex";

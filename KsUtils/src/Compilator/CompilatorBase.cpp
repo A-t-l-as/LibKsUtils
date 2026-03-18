@@ -12,7 +12,7 @@ void CompilatorBase::CompileCppFileToBin(const vector<char>& arg_clean_file)
     string ins_value_type;
     string ins_name;
     string ins_value;
-    Enums::value_types_enum en_ins_value_type = Enums::value_types_enum::e_invalid;
+    Enums::ENCompilatorValueTypes en_ins_value_type = Enums::ENCompilatorValueTypes::e_invalid;
 
     size_t start = 0;
     while (true)
@@ -32,7 +32,7 @@ void CompilatorBase::CompileCppFileToBin(const vector<char>& arg_clean_file)
         DEBUG_PRINT(ins_value_type, Mess::endl, ins_name, Mess::endl, ins_value, Mess::endl, "----", Mess::endl);
 
         // Reset wartosci
-        en_ins_value_type = Enums::value_types_enum::e_invalid;
+        en_ins_value_type = Enums::ENCompilatorValueTypes::e_invalid;
         ins_value_type.clear();
         ins_name.clear();
         ins_value.clear();
@@ -61,7 +61,7 @@ void CompilatorBase::WriteBooleanTabToFile(const string& str)
 void CompilatorBase::GetValuesFromString(
     string& arg_instruction,
     string& arg_value_type,
-    Enums::value_types_enum& arg_en_value_type,
+    Enums::ENCompilatorValueTypes& arg_en_value_type,
     string& arg_name,
     string& arg_value
     )
@@ -87,7 +87,7 @@ void CompilatorBase::GetValuesFromString(
         {
             arg_value_type = string();
 
-            arg_en_value_type = Enums::value_types_enum::e_invalid;
+            arg_en_value_type = Enums::ENCompilatorValueTypes::e_invalid;
 
             arg_name = string();
             arg_value = string();
@@ -121,10 +121,10 @@ void CompilatorBase::GetValuesFromString(
 
         // Typ string lub tablica char[] lub GUID lub samo char
         if (
-            arg_en_value_type == Enums::value_types_enum::e_string   ||
-            arg_en_value_type == Enums::value_types_enum::e_char_arr ||
-            arg_en_value_type == Enums::value_types_enum::e_GUID     ||
-            arg_en_value_type == Enums::value_types_enum::e_char
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_string   ||
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_char_arr ||
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_GUID     ||
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_char
             )
         {
             arg_value = arg_instruction.substr(valueindex + 1, arg_instruction.length() - (valueindex + 1) - 2);
@@ -149,9 +149,9 @@ void CompilatorBase::GetValuesFromString(
 
         // Typ struktury lub namespace
         if (
-            arg_en_value_type == Enums::value_types_enum::e_struct
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_struct
             ||
-            arg_en_value_type == Enums::value_types_enum::e_namespace
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_namespace
             )
         {
 
@@ -176,7 +176,7 @@ void CompilatorBase::GetValuesFromString(
 
             arg_value_type = string();
 
-            arg_en_value_type = Enums::value_types_enum::e_invalid;
+            arg_en_value_type = Enums::ENCompilatorValueTypes::e_invalid;
 
             arg_name = string();
             arg_value = string();
@@ -185,7 +185,7 @@ void CompilatorBase::GetValuesFromString(
         }
 
         // Typ 1bitmask
-        if (arg_en_value_type == Enums::value_types_enum::e_1bitmask)
+        if (arg_en_value_type == Enums::ENCompilatorValueTypes::e_1bitmask)
         {
             this->m_binary_value.set(this->m_bits_counter, static_cast<bool>(arg_value[0] - '0' ));
             ++this->m_bits_counter;
@@ -214,16 +214,16 @@ void CompilatorBase::GetValuesFromString(
 void CompilatorBase::WriteInstructionToBin
 (
     const string& value_type,
-    const Enums::value_types_enum& en_value_type,
+    const Enums::ENCompilatorValueTypes& en_value_type,
     const string& value
 )
 {
 
-    if (en_value_type == Enums::value_types_enum::e_invalid)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_invalid)
         return;
 
     // 1bitmask
-    if ((en_value_type == Enums::value_types_enum::e_1bitmask) && (m_bits_counter == Globals::byte_to_bits))
+    if ((en_value_type == Enums::ENCompilatorValueTypes::e_1bitmask) && (m_bits_counter == Globals::byte_to_bits))
     {
         this->r_output_file_buffer.WriteValue( static_cast<uint8_t>(m_binary_value.to_ulong()) );
         m_binary_value.reset();
@@ -235,35 +235,35 @@ void CompilatorBase::WriteInstructionToBin
     if (value_type.starts_with(CompilatorValueTypes::c_prefix_u))
     {
         // uint32_t
-        if (en_value_type == Enums::value_types_enum::e_uint32_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint32_t)
         {
             this->r_output_file_buffer.WriteValue(static_cast<uint32_t>(stoul(value)));
             return;
         }
 
         // uint8_t
-        if (en_value_type == Enums::value_types_enum::e_uint8_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint8_t)
         {
             this->r_output_file_buffer.WriteValue( static_cast<uint8_t>( stoul(value) ) );
             return;
         }
 
         // uint16_t
-        if (en_value_type == Enums::value_types_enum::e_uint16_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint16_t)
         {
             this->r_output_file_buffer.WriteValue(static_cast<uint16_t>(stoul(value)));
             return;
         }
 
         // uint64_t
-        if (en_value_type == Enums::value_types_enum::e_uint64_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint64_t)
         {
             this->r_output_file_buffer.WriteValue(static_cast<uint64_t>(stoull(value)));
             return;
         }
 
         // uint32_t[]
-        if (en_value_type == Enums::value_types_enum::e_uint32_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint32_t_arr)
         {
             WriteTabToFile<uint32_t>(value);
             return;
@@ -271,7 +271,7 @@ void CompilatorBase::WriteInstructionToBin
 
 
         // uint8_t[]
-        if (en_value_type == Enums::value_types_enum::e_uint8_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint8_t_arr)
         {
             WriteTabToFile<uint8_t>(value);
 
@@ -279,7 +279,7 @@ void CompilatorBase::WriteInstructionToBin
         }
 
         // uint16_t[]
-        if (en_value_type == Enums::value_types_enum::e_uint16_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint16_t_arr)
         {
             WriteTabToFile<uint16_t>(value);
 
@@ -287,7 +287,7 @@ void CompilatorBase::WriteInstructionToBin
         }
 
         // uint64_t[]
-        if (en_value_type == Enums::value_types_enum::e_uint64_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_uint64_t_arr)
         {
             WriteTabToFile<uint64_t>(value);
 
@@ -296,7 +296,7 @@ void CompilatorBase::WriteInstructionToBin
     }
 
     // string
-    if (en_value_type == Enums::value_types_enum::e_string)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_string)
     {
         uint32_t string_len = static_cast<uint32_t>(value.size());
         this->r_output_file_buffer.WriteValue(string_len);
@@ -305,14 +305,14 @@ void CompilatorBase::WriteInstructionToBin
     }
 
     // 32bituniquekey
-    if (en_value_type == Enums::value_types_enum::e_32bituniquekey)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_32bituniquekey)
     {
         this->r_output_file_buffer.WriteValue( this->r_hash_maps.GetU32ConstFromString(value) );
         return;
     }
 
     // bool
-    if (en_value_type == Enums::value_types_enum::e_bool)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_bool)
     {
         bool boolean_val = this->r_hash_maps.GetBooleanValueFromString(value);
         this->r_output_file_buffer.WriteValue(boolean_val);
@@ -320,7 +320,7 @@ void CompilatorBase::WriteInstructionToBin
     }
 
     // bool[]
-    if (en_value_type == Enums::value_types_enum::e_bool_arr)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_bool_arr)
     {
         WriteBooleanTabToFile(value);
         return;
@@ -331,28 +331,28 @@ void CompilatorBase::WriteInstructionToBin
     {
 
         // int32_t albo int
-        if (en_value_type == Enums::value_types_enum::e_int32_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int32_t)
         {
             this->r_output_file_buffer.WriteValue(static_cast<int32_t>(stol(value)));
             return;
         }
 
         // int8_t
-        if (en_value_type == Enums::value_types_enum::e_int8_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int8_t)
         {
             this->r_output_file_buffer.WriteValue(static_cast<int8_t>(stol(value)));
             return;
         }
 
         // int16_t
-        if (en_value_type == Enums::value_types_enum::e_int16_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int16_t)
         {
             this->r_output_file_buffer.WriteValue(static_cast<int16_t>(stol(value)));
             return;
         }
 
         // int64_t
-        if (en_value_type == Enums::value_types_enum::e_int64_t)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int64_t)
         {
             this->r_output_file_buffer.WriteValue(static_cast<int64_t>(stoll(value)));
             return;
@@ -360,14 +360,14 @@ void CompilatorBase::WriteInstructionToBin
 
 
         // int32_t[] albo int[]
-        if (en_value_type == Enums::value_types_enum::e_int32_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int32_t_arr)
         {
             WriteTabToFile<int32_t>(value);
             return;
         }
 
         // int8_t[]
-        if (en_value_type == Enums::value_types_enum::e_int8_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int8_t_arr)
         {
             WriteTabToFile<int8_t>(value);
 
@@ -376,7 +376,7 @@ void CompilatorBase::WriteInstructionToBin
 
 
         // int16_t[]
-        if (en_value_type == Enums::value_types_enum::e_int16_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int16_t_arr)
         {
             WriteTabToFile<int16_t>(value);
 
@@ -385,7 +385,7 @@ void CompilatorBase::WriteInstructionToBin
 
 
         // int64_t[]
-        if (en_value_type == Enums::value_types_enum::e_int64_t_arr)
+        if (en_value_type == Enums::ENCompilatorValueTypes::e_int64_t_arr)
         {
             WriteTabToFile<int64_t>(value);
 
@@ -395,7 +395,7 @@ void CompilatorBase::WriteInstructionToBin
     }
 
     // 8bitmask
-    if (en_value_type == Enums::value_types_enum::e_8bitmask)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_8bitmask)
     {
         WriteNBitMaskToFile<uint8_t>(value);
 
@@ -403,7 +403,7 @@ void CompilatorBase::WriteInstructionToBin
     }
 
     // 32bitmask
-    if (en_value_type == Enums::value_types_enum::e_32bitmask)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_32bitmask)
     {
         WriteNBitMaskToFile<uint32_t>(value);
 
@@ -412,14 +412,14 @@ void CompilatorBase::WriteInstructionToBin
 
 
     //  char
-    if (en_value_type == Enums::value_types_enum::e_char)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_char)
     {
         this->r_output_file_buffer.WriteString(value);
         return;
     }
 
     //  char[]
-    if (en_value_type == Enums::value_types_enum::e_char_arr)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_char_arr)
     {
         this->r_output_file_buffer.WriteString(value, this->write_null_terminator_after_char_str);
         return;
@@ -427,14 +427,14 @@ void CompilatorBase::WriteInstructionToBin
 
 
     // GUID
-    if (en_value_type == Enums::value_types_enum::e_GUID)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_GUID)
     {
         this->r_output_file_buffer.WriteGuid(value);
         return;
     }
 
     // 16bituniquekey
-    if (en_value_type == Enums::value_types_enum::e_16bituniquekey)
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_16bituniquekey)
     {
         this->r_output_file_buffer.WriteValue(  this->r_hash_maps.GetU16ConstFromString(value) );
         return;

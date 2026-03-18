@@ -14,7 +14,7 @@ public:
     HybridApp()
     {}
 
-    void Run(int my_argc, char* my_argv[]) override
+    int Run(int my_argc, char* my_argv[]) override
     {
         std::string flag;
 
@@ -44,6 +44,8 @@ public:
                                 "-c   -   compile/import mode");
             exit(EXIT_FAILURE);
         }
+
+        return EXIT_SUCCESS;
     }
 
 protected:
@@ -69,12 +71,12 @@ private:
         {
             CONSOLE_IN.Scan(mode);
 
-            if (!Misc::CheckAnswerWithEveryElementInVec(mode, correct_modes))
+            if (!Misc::CheckThatElementExistInVec(mode, correct_modes))
             {
                 CONSOLE_OUT.PrintLn("Choose from the given modes...");
             }
 
-        } while (!Misc::CheckAnswerWithEveryElementInVec(mode, correct_modes));
+        } while (!Misc::CheckThatElementExistInVec(mode, correct_modes));
 
         if(mode == "1") flag = "-e";
 

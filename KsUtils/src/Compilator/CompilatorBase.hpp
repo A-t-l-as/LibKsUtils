@@ -91,7 +91,7 @@ protected:
     void GetValuesFromString(
         std::string& arg_instruction,
         std::string& arg_value_type,
-        Enums::value_types_enum& arg_en_value_type,
+        Enums::ENCompilatorValueTypes& arg_en_value_type,
         std::string& arg_name,
         std::string& arg_value
         );
@@ -100,7 +100,7 @@ protected:
     virtual bool SpecialAction0(
         std::string& arg_instruction,
         std::string& arg_value_type,
-        Enums::value_types_enum& arg_en_value_type,
+        Enums::ENCompilatorValueTypes& arg_en_value_type,
         std::string& arg_name,
         std::string& arg_value
         )
@@ -111,7 +111,7 @@ protected:
     virtual bool SpecialAction1(
         std::string& arg_instruction,
         std::string& arg_value_type,
-        Enums::value_types_enum& arg_en_value_type,
+        Enums::ENCompilatorValueTypes& arg_en_value_type,
         std::string& arg_name,
         std::string& arg_value
         )
@@ -123,7 +123,7 @@ protected:
     virtual bool TryResolveSpecialValue(
         std::string& arg_instruction,
         std::string& arg_value_type,
-        Enums::value_types_enum& arg_en_value_type,
+        Enums::ENCompilatorValueTypes& arg_en_value_type,
         std::string& arg_name,
         std::string& arg_value
         )
@@ -132,7 +132,7 @@ protected:
     }
 
 
-    void WriteInstructionToBin(const std::string& value_type, const Enums::value_types_enum& en_value_type, const std::string& value);
+    void WriteInstructionToBin(const std::string& value_type, const Enums::ENCompilatorValueTypes& en_value_type, const std::string& value);
 
 
     inline uint64_t CountValuesInTab(const std::string& value)

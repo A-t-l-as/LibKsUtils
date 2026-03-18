@@ -3,7 +3,7 @@
 
 namespace Enums
 {
-	enum value_types_enum
+    enum class ENCompilatorValueTypes
 	{
 		e_char,
 		e_char_arr,
