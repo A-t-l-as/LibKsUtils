@@ -27,6 +27,13 @@ public:
 		m_file_buffer.insert(m_file_buffer.end(), arg_buff, arg_buff + buff_len);
     }
 
+    /*
+     * Szablony template<> sa obliczanie w czasie kompilacji, czyli:
+     * -> rozmiar typu T bedzie znany podczas kompilacji (sizeof(T)),
+     * -> ze wzgledu na to ze szablony sa obliczane w czasie kompilacji to
+     * sizeof(T) zadziala.
+    */
+
 	template<typename T>
 	inline void WriteValue(const T& val)
 	{

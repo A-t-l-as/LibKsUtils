@@ -3,6 +3,8 @@
 
 #include <string>
 #include <algorithm>
+#include <vector>
+#include <sstream>
 
 namespace StringUtils
 {
@@ -73,6 +75,23 @@ inline bool IsNumber(const std::string& s)
 }
 
 
+inline std::vector<std::string> Tokenize(const std::string& line)
+{
+    std::vector<std::string> tokens;
+    std::istringstream iss(line);
+    std::string token;
+    while (iss >> token) tokens.push_back(token);
+    return tokens;
+}
+
+inline bool ToBool(std::string str)
+{
+    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+    std::istringstream is(str);
+    bool b;
+    is >> std::boolalpha >> b;
+    return b;
+}
 
 };
 

@@ -1,6 +1,7 @@
 #ifndef MISC_H
 #define MISC_H
 
+#include "Utils/StringUtils.hpp"
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -108,6 +109,27 @@ namespace Misc
         for (std::size_t i = 0; i < n; ++i)
             vec.push_back(value);
     }
+
+
+    static void CheckThatArgumentsAreNumbers(char* argv[], int from, int to)
+    {
+        for(int i = from; i <= to; ++i)
+        {
+            if( !StringUtils::IsNumber(argv[i]) )
+            {
+                throw
+                    std::runtime_error
+                    (
+                        "The arguments passed from argv[" +
+                        std::to_string(from) +
+                        "] to argv[" +
+                        std::to_string(to) +
+                        "] are not numbers!"
+                    );
+            }
+        }
+    }
+
 
 };
 

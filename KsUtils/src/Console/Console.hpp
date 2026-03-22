@@ -19,21 +19,22 @@
 class Console
 {
 public:
-	static Console& Get();
-	
-	MessScanner In();
-	MessPrinter Out();
-	MessPrinter Err();
+    static Console& Get()
+    {
+        static Console instance;
+        return instance;
+    }
+
+    MessScanner In();
+    MessPrinter Out();
+    MessPrinter Err();
 
 private:
-	Console() {};
-	~Console()
-	{
-		delete m_pInstance;
-	}
+    Console() = default;
+    ~Console() = default;
 
-	static Console* m_pInstance;
-
+    Console(const Console&) = delete;
+    Console& operator=(const Console&) = delete;
 };
 
 

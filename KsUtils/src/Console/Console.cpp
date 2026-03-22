@@ -4,24 +4,18 @@
 
 using namespace std;
 
-Console* Console::m_pInstance = new Console();
-
 MessScanner Console::In()
 {
-	return MessScanner(cin);
+    return MessScanner(cin);
 }
 
 MessPrinter Console::Out()
 {
-	return MessPrinter(cout);
+    return MessPrinter(cout);
 }
 
 MessPrinter Console::Err()
 {
-	return MessPrinter(cerr);
+    return MessPrinter(cerr);
 }
 
-Console& Console::Get()
-{
-	return *m_pInstance;
-}
