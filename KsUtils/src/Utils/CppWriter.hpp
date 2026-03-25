@@ -36,7 +36,13 @@ namespace CppWriter
 	}
 
 	template<typename Type>
-    inline void WriteTrivialValue(std::stringstream& ss, const std::string& name, const Type& value, bool make_new_line = true)
+    inline void WriteTrivialValue
+    (
+        std::stringstream& ss,
+        const std::string& name,
+        const Type& value,
+        bool make_new_line = true
+    )
 	{
 		ss << ConvertTrivialTypeToString(value) << " " << name << " = ";
 
@@ -53,7 +59,13 @@ namespace CppWriter
 			ss << std::endl;
 	}
 
-    inline void WriteString(std::stringstream& ss, const std::string& name, const std::string& value, bool make_new_line = true)
+    inline void WriteString
+    (
+        std::stringstream& ss,
+        const std::string& name,
+        const std::string& value,
+        bool make_new_line = true
+    )
     {
         ss << CompilatorValueTypes::c_string_type_str << " " << name << " = \"" << value << "\";";
         if (make_new_line)
@@ -61,13 +73,14 @@ namespace CppWriter
     }
 
     template<typename Type>
-    void WriteUniqueKeyWithConst(
+    void WriteUniqueKeyWithConst
+    (
         std::stringstream& ss,
         const std::string& name,
         const Type& value,
         std::unordered_map<Type, std::string>& list_of_masks,
         bool make_new_line = true
-        )
+    )
     {
 
         if (list_of_masks[value] == "")
@@ -89,7 +102,13 @@ namespace CppWriter
 
     }
 
-    inline void WriteGuid(std::stringstream& ss, const std::string& name, const std::string& guid, bool make_new_line = true)
+    inline void WriteGuid
+    (
+        std::stringstream& ss,
+        const std::string& name,
+        const std::string& guid,
+        bool make_new_line = true
+    )
     {
         ss << CompilatorValueTypes::c_guid_type_str << " " << name << " = " << guid << ";";
         if (make_new_line)

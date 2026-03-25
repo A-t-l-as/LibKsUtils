@@ -54,7 +54,12 @@ inline void RemoveCharFromTheString(std::string& str, char symbol)
 }
 
 
-inline void ReplaceAllOccurrences(std::string& str_buffer, const std::string& search_str, const std::string& replace_str)
+inline void ReplaceAllOccurrences
+(
+    std::string& str_buffer,
+    const std::string& search_str,
+    const std::string& replace_str
+)
 {
     if (search_str.empty()) return;
 
@@ -91,6 +96,24 @@ inline bool ToBool(std::string str)
     bool b;
     is >> std::boolalpha >> b;
     return b;
+}
+
+template<typename T>
+std::string VecToString(const std::vector<T>& v)
+{
+    std::stringstream ss;
+
+    const std::size_t v_size = v.size();
+
+    for (std::size_t i = 0; i < v_size; ++i)
+    {
+        if (i > 0)
+            ss << ", ";
+
+        ss << v[i];
+    }
+
+    return ss.str();
 }
 
 };

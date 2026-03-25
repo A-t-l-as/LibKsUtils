@@ -21,7 +21,8 @@ namespace MySystem
 
     inline bool CheckThatDirExists(const std::filesystem::path& arg_input_directory_path)
     {
-        return std::filesystem::exists(arg_input_directory_path) && std::filesystem::is_directory(arg_input_directory_path);
+        return
+        std::filesystem::exists(arg_input_directory_path) && std::filesystem::is_directory(arg_input_directory_path);
     }
 
     inline bool SafeLocalTime(const time_t* t, tm* tm_out)

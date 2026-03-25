@@ -23,11 +23,11 @@ struct MyGuidStruct
 
         guid.Data1 = dist32(gen);
         guid.Data2 = dist16(gen);
-        // Wersja 4 UUID: najwyższe 4 bity Data3 = 0100
+        // Wersja 4 UUID: najwyzsze 4 bity Data3 = 0100
         guid.Data3 = (dist16(gen) & 0x0FFF) | 0x4000;
 
         uint64_t data4 = dist64(gen);
-        // Variant bits: najwyższe 2 bity = 10
+        // Variant bits: najwyzsze 2 bity = 10
         data4 = (data4 & 0x3FFFFFFFFFFFFFFF) | 0x8000000000000000;
 
         for (int i = 0; i < SizeOfData4; ++i)

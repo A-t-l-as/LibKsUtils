@@ -57,7 +57,12 @@ static void WriteConstValueToSs
 
 
 template<typename T>
-inline void WriteOneValueToSs(const std::string& name, T value, std::stringstream& output, std::size_t margin_val = Globals::two_quads)
+inline void WriteOneValueToSs
+(
+    const std::string& name, T value,
+    std::stringstream& output,
+    std::size_t margin_val = Globals::two_quads
+)
 {
     Misc::Margin(output, margin_val); output << name << " " << value << std::endl;
 }
@@ -165,7 +170,12 @@ static void WriteArrayToSs
 
 
 
-inline void WriteSingleStringToSs(const std::string& sin_str, std::stringstream& output, std::size_t margin_val = Globals::one_quad)
+inline void WriteSingleStringToSs
+(
+    const std::string& sin_str,
+    std::stringstream& output,
+    std::size_t margin_val = Globals::one_quad
+)
 {
     Misc::Margin(output, margin_val); output << sin_str << std::endl;
 }
@@ -242,11 +252,14 @@ inline void PrepareString(std::string& arg_str, const std::string& sub_str)
 }
 
 
-inline bool GetObjType(const std::string& uppercased_instruction,
-                       const std::string& original_instruction,
-                       std::string& inside_obj_type,
-                       std::string& inside_obj_name,
-                       const std::string& obj_type_name)
+inline bool GetObjType
+(
+    const std::string& uppercased_instruction,
+    const std::string& original_instruction,
+    std::string& inside_obj_type,
+    std::string& inside_obj_name,
+    const std::string& obj_type_name
+)
 {
     if ( !uppercased_instruction.starts_with(obj_type_name) )
         return Globals::error_code;
@@ -357,7 +370,8 @@ static void GetVectorOfStrings
 
             if (single_value_end_index < m_help_str.length() - 1)
             {
-                m_help_str = m_help_str.substr(single_value_end_index + 2, m_help_str.length() - single_value_end_index);
+                m_help_str =
+                    m_help_str.substr(single_value_end_index + 2, m_help_str.length() - single_value_end_index);
             }
         }
     }

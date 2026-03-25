@@ -84,8 +84,11 @@ namespace Misc
     }
 
 
-    inline void InitializeHashMapViaLabelsVector(std::unordered_map<std::string, int64_t>& labels_map,
-                                                 const std::vector<std::string>& labels)
+    inline void InitializeHashMapViaLabelsVector
+    (
+        std::unordered_map<std::string, int64_t>& labels_map,
+        const std::vector<std::string>& labels
+    )
     {
         int64_t i = 0;
         for (const std::string& str : labels)
@@ -130,6 +133,39 @@ namespace Misc
         }
     }
 
+    static void ThrowExceptionWhenValueIsNegative(int32_t val)
+    {
+        if(val < 0)
+            throw std::runtime_error("Error: The value cannot be less than zero!");
+    }
+
+    static std::vector<int32_t> ConvertStrVecToI32Vec
+    (
+        const std::vector<std::string>& args,
+        std::size_t from_closed,
+        std::size_t to_open
+    )
+    {
+        if (from_closed > to_open || to_open > args.size())
+            throw std::out_of_range("Invalid range");
+
+        std::vector<int32_t> result;
+        result.reserve(to_open - from_closed);
+
+        std::transform
+        (
+            args.begin() + from_closed,
+            args.begin() + to_open,
+            std::back_inserter(result),
+            [](const std::string& s)
+            {
+                return static_cast<int32_t>( std::stoll(s) );
+            }
+        );
+
+
+        return result;
+    }
 
 };
 

@@ -111,7 +111,8 @@ public:
         {
             const std::size_t intruction_name_len = instruction_name.length() + 1;
 
-            std::string help_str = arg_line.substr(intruction_name_len, arg_line.length() - intruction_name_len) + ',';
+            std::string help_str =
+                arg_line.substr(intruction_name_len, arg_line.length() - intruction_name_len) + ',';
 
             std::size_t single_value_end_index;
             std::string single_value_str;
@@ -130,7 +131,13 @@ public:
 
                     single_value_str = help_str.substr(0, single_value_end_index);
 
-                    if ((j == TypeOfTwoTypeArray::first_type) && (size_of_array == A_SIZE) && (!single_value_str.empty()))
+                    if (
+                        (j == TypeOfTwoTypeArray::first_type)
+                        &&
+                        (size_of_array == A_SIZE)
+                        &&
+                        (!single_value_str.empty())
+                        )
                     {
                         if (format_a == "%d")
                         {
@@ -148,7 +155,9 @@ public:
                         }
                     }
 
-                    if ((j == TypeOfTwoTypeArray::second_type) && (size_of_array == B_SIZE) && (!single_value_str.empty()))
+                    if (
+                        (j == TypeOfTwoTypeArray::second_type)
+                        && (size_of_array == B_SIZE) && (!single_value_str.empty()))
                     {
                         if (format_b == "%d")
                         {
@@ -166,7 +175,8 @@ public:
                         }
                     }
 
-                    help_str = help_str.substr(single_value_end_index + 1, help_str.length() - single_value_end_index);
+                    help_str =
+                        help_str.substr(single_value_end_index + 1, help_str.length() - single_value_end_index);
 
                 }
 
@@ -302,7 +312,13 @@ public:
 
                         single_value_str = help_str.substr(0, single_value_end_index);
 
-                        if ((j == TypeOfTwoTypeArray::first_type) && (size_of_array == A_SIZE) && (!single_value_str.empty()))
+                        if (
+                            (j == TypeOfTwoTypeArray::first_type)
+                            &&
+                            (size_of_array == A_SIZE)
+                            &&
+                            (!single_value_str.empty())
+                            )
                         {
                             if (format_a == "%d")
                             {
@@ -320,7 +336,13 @@ public:
                             }
                         }
 
-                        if ((j == TypeOfTwoTypeArray::second_type) && (size_of_array == B_SIZE) && (!single_value_str.empty()))
+                        if (
+                            (j == TypeOfTwoTypeArray::second_type)
+                            &&
+                            (size_of_array == B_SIZE)
+                            &&
+                            (!single_value_str.empty())
+                            )
                         {
                             if (format_b == "%d")
                             {
@@ -338,7 +360,8 @@ public:
                             }
                         }
 
-                        help_str = help_str.substr(single_value_end_index + 1, help_str.length() - single_value_end_index);
+                        help_str =
+                            help_str.substr(single_value_end_index + 1, help_str.length() - single_value_end_index);
 
                     }
 
@@ -421,7 +444,13 @@ public:
                             }
                         }
 
-                        if ((j == TypeOfTwoTypeArray::second_type) && (size_of_array == B_SIZE) && (!single_value_str.empty()))
+                        if (
+                            (j == TypeOfTwoTypeArray::second_type)
+                            &&
+                            (size_of_array == B_SIZE)
+                            &&
+                            (!single_value_str.empty())
+                            )
                         {
                             if (format_b == "%d")
                             {
@@ -439,7 +468,8 @@ public:
                             }
                         }
 
-                        help_str = help_str.substr(single_value_end_index + 1, help_str.length() - single_value_end_index);
+                        help_str =
+                            help_str.substr(single_value_end_index + 1, help_str.length() - single_value_end_index);
 
                     }
 

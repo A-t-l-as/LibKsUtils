@@ -132,7 +132,12 @@ protected:
     }
 
 
-    void WriteInstructionToBin(const std::string& value_type, const Enums::ENCompilatorValueTypes& en_value_type, const std::string& value);
+    void WriteInstructionToBin
+    (
+        const std::string& value_type,
+        const Enums::ENCompilatorValueTypes& en_value_type,
+        const std::string& value
+    );
 
 
     inline uint64_t CountValuesInTab(const std::string& value)

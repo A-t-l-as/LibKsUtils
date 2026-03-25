@@ -83,7 +83,8 @@ public:
 
 
         for (size_t i = 0; i < number_of_value_types; ++i)
-            this->m_hash_map_of_value_types_enums[std::string(value_types[i])] = static_cast<Enums::ENCompilatorValueTypes>(i);
+            this->m_hash_map_of_value_types_enums[std::string(value_types[i])] =
+                static_cast<Enums::ENCompilatorValueTypes>(i);
     }
 
 

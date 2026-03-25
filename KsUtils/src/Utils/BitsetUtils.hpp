@@ -14,7 +14,11 @@
 
 namespace BitsetUtils
 {
-    inline std::string ToListOfCppValues(const std::bitset<Globals::byte_to_bits>& bits, const std::vector<std::string>& labels)
+    inline std::string ToListOfCppValues
+    (
+        const std::bitset<Globals::byte_to_bits>& bits,
+        const std::vector<std::string>& labels
+    )
     {
         std::stringstream ss;
 

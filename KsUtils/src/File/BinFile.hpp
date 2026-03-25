@@ -186,7 +186,8 @@ public:
         {
             DEBUG_PRINT("template<typename T> inline void BinFile::ChangeValue(std::size_t arg_offset, const T& value):",
                         Mess::endl,
-                        "Error!: You are trying to change the location of a file that you do not have access to.", Mess::endl,
+                        "Error!: You are trying to change the location of a file that you do not have access to.",
+                        Mess::endl,
                         "BinFile::m_file_buffer.empty() = ", this->m_file_buffer.empty(), Mess::endl,
                         "BinFile::m_file_buffer.size() = ", this->m_file_buffer.size(), Mess::endl,
                         "arg_offset = ", arg_offset, Mess::endl);
