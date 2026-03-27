@@ -25,6 +25,19 @@ namespace MySystem
         std::filesystem::exists(arg_input_directory_path) && std::filesystem::is_directory(arg_input_directory_path);
     }
 
+    inline void ThrowExceptionWhenFileNotExistOrIsNotRegularFile(const std::filesystem::path& arg_input_file_path)
+    {
+        if (!std::filesystem::exists(arg_input_file_path))
+        {
+            throw std::runtime_error("Error: The specified " + arg_input_file_path.string() + " file does not exist.");
+        }
+
+        if (!std::filesystem::is_regular_file(arg_input_file_path))
+        {
+            throw std::runtime_error("Error: The specified " + arg_input_file_path.string() + " file is not regular file.");
+        }
+    }
+
     inline bool SafeLocalTime(const time_t* t, tm* tm_out)
     {
 #ifdef _WIN32

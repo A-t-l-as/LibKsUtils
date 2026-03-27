@@ -139,6 +139,12 @@ namespace Misc
             throw std::runtime_error("Error: The value cannot be less than zero!");
     }
 
+    static void ThrowExceptionWhenValueIsNegativeOrZero(int32_t val)
+    {
+        if(val <= 0)
+            throw std::runtime_error("Error: The value must be greater than zero!");
+    }
+
     static std::vector<int32_t> ConvertStrVecToI32Vec
     (
         const std::vector<std::string>& args,
