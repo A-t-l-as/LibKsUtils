@@ -63,7 +63,7 @@ namespace CompilatorValueTypes
     constexpr char c_namespace_type_str[] = "namespace";
 
     constexpr size_t number_of_compilator_value_types = 20;
-	static const char* compilator_value_types[] =
+    static const char* compilator_value_types[] =
 	{
 		c_1bitmask_type_str,
 		c_uint32_t_type_str,
