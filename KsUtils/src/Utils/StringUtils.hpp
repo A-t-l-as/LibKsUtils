@@ -98,6 +98,8 @@ inline bool ToBool(std::string str)
     return b;
 }
 
+
+
 template<typename T>
 std::string VecToString(const std::vector<T>& v)
 {
@@ -115,6 +117,9 @@ std::string VecToString(const std::vector<T>& v)
 
     return ss.str();
 }
+
+
+
 
 };
 

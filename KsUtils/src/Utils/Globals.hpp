@@ -4,6 +4,9 @@
 #include <cstddef>
 namespace Globals
 {
+    constexpr char indent_8_str[] = "        ";
+    constexpr std::size_t indent_8_str_len = sizeof(Globals::indent_8_str) - 1;
+
     constexpr int one_quad = 1;
     constexpr int two_quads = 2;
     constexpr int three_quads = 3;

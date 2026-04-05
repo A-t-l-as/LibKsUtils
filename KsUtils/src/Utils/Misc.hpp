@@ -133,16 +133,67 @@ namespace Misc
         }
     }
 
-    static void ThrowExceptionWhenValueIsNegative(int32_t val)
+    inline void ThrowExceptionWhenValueIsNegative(int32_t val)
     {
         if(val < 0)
             throw std::runtime_error("Error: The value cannot be less than zero!");
     }
 
-    static void ThrowExceptionWhenValueIsNegativeOrZero(int32_t val)
+    inline void ThrowExceptionWhenValueIsNegativeOrZero(int32_t val)
     {
         if(val <= 0)
             throw std::runtime_error("Error: The value must be greater than zero!");
+    }
+
+    template <class T>
+    inline void ThrowExceptionWhenVecIsEmpty(const std::vector<T>& vec, const std::string& str)
+    {
+        if(vec.empty())
+            throw std::runtime_error("Error: The " + str + " is empty!");
+    }
+
+    inline std::string CreateErrorMessageVecIsEmpty(const std::string& str)
+    {
+        return "Error: The " + str + " is empty!";
+    }
+
+    template <class T>
+    inline void ThrowExceptionWhenIndexIsNotInVecRange
+    (
+        const std::vector<T>& vec,
+        int32_t index,
+        const std::string& error_mess
+    )
+    {
+        if(index < 0 || static_cast<std::size_t>(index) >= vec.size())
+            throw std::runtime_error(error_mess);
+    }
+
+    template <class T>
+    inline void ThrowExceptionsWhenIndexesAreNotInVecRange
+    (
+        const std::vector<T>& vec,
+        const std::string& vec_name,
+        int32_t index_1,
+        int32_t index_2,
+        const std::string& mess
+    )
+    {
+        Misc::ThrowExceptionWhenVecIsEmpty(vec, vec_name);
+
+        Misc::ThrowExceptionWhenIndexIsNotInVecRange
+        (
+            vec,
+            index_1,
+            mess
+        );
+
+        Misc::ThrowExceptionWhenIndexIsNotInVecRange
+        (
+            vec,
+            index_2,
+            mess
+        );
     }
 
     static std::vector<int32_t> ConvertStrVecToI32Vec
