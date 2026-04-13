@@ -49,6 +49,7 @@ namespace BitsetUtils
         std::reverse(s.begin(), s.end());
         return s;
     }
+
 };
 
 #endif // !BITSET_UTILS_H
