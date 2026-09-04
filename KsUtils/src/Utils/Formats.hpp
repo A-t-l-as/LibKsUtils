@@ -11,7 +11,9 @@ namespace Formats
         invalid,
         cpp,
         png,
-        hpp
+        hpp,
+        json,
+        txt
     };
 
     constexpr char tex_format_str[] = "tex";
@@ -21,6 +23,7 @@ namespace Formats
     constexpr char png_format_str[] = "png";
     constexpr char par_format_str[] = "par";
     constexpr char wpk_format_str[] = "wpk";
+    constexpr char json_format_str[] = "json";
 
     constexpr char tex_format_str_upper[] = "TEX";
     constexpr char cpp_format_str_upper[] = "CPP";
@@ -29,6 +32,7 @@ namespace Formats
     constexpr char png_format_str_upper[] = "PNG";
     constexpr char par_format_str_upper[] = "PAR";
     constexpr char wpk_format_str_upper[] = "WPK";
+    constexpr char json_format_str_upper[] = "JSON";
 
     constexpr char tex_format_str_with_dot[] = ".tex";
     constexpr char cpp_format_str_with_dot[] = ".cpp";
@@ -40,6 +44,8 @@ namespace Formats
 
     constexpr char par_format_str_with_dot[] = ".par";
     constexpr char wpk_format_str_with_dot[] = ".wpk";
+    constexpr char json_format_str_with_dot[] = ".json";
+
 
     constexpr char tex_format_str_upper_with_dot[] = ".TEX";
     constexpr char cpp_format_str_upper_with_dot[] = ".CPP";
@@ -48,6 +54,7 @@ namespace Formats
     constexpr char png_format_str_upper_with_dot[] = ".PNG";
     constexpr char par_format_str_upper_with_dot[] = ".PAR";
     constexpr char wpk_format_str_upper_with_dot[] = ".WPK";
+    constexpr char json_format_str_upper_with_dot[] = ".JSON";
 
 };
 
