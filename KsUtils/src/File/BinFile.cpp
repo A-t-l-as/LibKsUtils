@@ -6,7 +6,7 @@
 using namespace std;
 namespace fs = filesystem;
 
-string BinFile::ReadSimpleString()
+string BinFile::ReadShortString()
 {
 	uint8_t temp_length_of_string = 0;
 	this->ReadValue(temp_length_of_string);

@@ -72,7 +72,7 @@ void CompilatorBase::GetValuesFromString(
         bool nopswitch = true;
 
         // Sprawdzenie czy jest prawidlowy typ
-        for (uint32_t i = 0; i < CVT::number_of_compilator_value_types; ++i)
+        for (uint32_t i = 0; i < CVT::number_of_compilator_value_types_for_checking_type; ++i)
         {
             if (arg_instruction.starts_with(CVT::compilator_value_types[i]) )
             {
@@ -119,12 +119,13 @@ void CompilatorBase::GetValuesFromString(
         //-------------------------------------
 
 
-        // Typ string lub tablica char[] lub GUID lub samo char
+        // Typ string lub tablica char[] lub GUID lub samo char lub short_string
         if (
             arg_en_value_type == Enums::ENCompilatorValueTypes::e_string   ||
             arg_en_value_type == Enums::ENCompilatorValueTypes::e_char_arr ||
             arg_en_value_type == Enums::ENCompilatorValueTypes::e_GUID     ||
-            arg_en_value_type == Enums::ENCompilatorValueTypes::e_char
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_char     ||
+            arg_en_value_type == Enums::ENCompilatorValueTypes::e_short_string
             )
         {
             arg_value = arg_instruction.substr(valueindex + 1, arg_instruction.length() - (valueindex + 1) - 2);
@@ -444,6 +445,13 @@ void CompilatorBase::WriteInstructionToBin
     if (en_value_type == Enums::ENCompilatorValueTypes::e_float)
     {
         this->r_output_file_buffer.WriteValue( stof(value) );
+        return;
+    }
+
+    // short_string
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_short_string)
+    {
+        this->r_output_file_buffer.WriteShortStringWithLen(value);
         return;
     }
 

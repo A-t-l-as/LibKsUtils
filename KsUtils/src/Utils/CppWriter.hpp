@@ -86,6 +86,19 @@ namespace CppWriter
             ss << std::endl;
     }
 
+    inline void WriteShortString
+    (
+        std::stringstream& ss,
+        const std::string& name,
+        const std::string& value,
+        bool make_new_line = true
+    )
+    {
+        ss << CompilatorValueTypes::c_short_string_type_str << " " << name << " = \"" << value << "\";";
+        if (make_new_line)
+            ss << std::endl;
+    }
+
     template<typename Type>
     void WriteUniqueKeyWithConst
     (

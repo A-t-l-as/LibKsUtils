@@ -64,7 +64,9 @@ namespace CompilatorValueTypes
 
     constexpr char c_float_type_str[] = "float";
 
-    constexpr size_t number_of_compilator_value_types = 21;
+    constexpr char c_short_string_type_str[] = "short_string";
+
+    constexpr size_t number_of_compilator_value_types = 22;
     static const char* compilator_value_types[] =
 	{
 		c_1bitmask_type_str,
@@ -87,8 +89,14 @@ namespace CompilatorValueTypes
 		c_struct_type_str,
         c_namespace_type_str,
         c_float_type_str,
+        c_short_string_type_str,
 		""
 	};
+
+    // ----------------------------------------------
+    // Trzeba pominac ostatni typ instrukcji czyli ""
+    constexpr size_t number_of_compilator_value_types_for_checking_type = number_of_compilator_value_types - 1;
+    //-----------------------------------------------
 
 	constexpr char c_bool_false_value[] = "false";
 	constexpr char c_bool_true_value[]  = "true";

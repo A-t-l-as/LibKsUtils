@@ -139,6 +139,13 @@ public:
         }
     }
 
+    void WriteShortStringWithLen(const std::string& str)
+    {
+        uint8_t size_of_str = static_cast<uint8_t>(str.length());
+        WriteValue(size_of_str);
+        m_file_buffer.insert(m_file_buffer.end(), str.begin(), str.end());
+    }
+
     template<typename T>
     void WriteVector(const std::vector<T>& values)
     {
@@ -241,7 +248,7 @@ public:
     }
 
 
-	std::string ReadSimpleString();
+    std::string ReadShortString();
 	std::string ReadString();
 
     std::string ReadStringWithNullTerminator()

@@ -80,6 +80,8 @@ public:
 
                 CVT::c_float_type_str,
 
+                CVT::c_short_string_type_str,
+
                 ""
             };
 

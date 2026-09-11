@@ -53,6 +53,8 @@ namespace Enums
 
         e_float,
 
+        e_short_string,
+
 		e_invalid
 	};
 

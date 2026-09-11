@@ -75,6 +75,12 @@ public:
         CppWriter::WriteString(this->m_stream_data, name, value, make_new_line);
 	}
 
+    inline void WriteShortString(int quadcount, const std::string& name, const std::string& value, bool make_new_line = true)
+    {
+        WriteSymbol('\t', quadcount);
+        CppWriter::WriteShortString(this->m_stream_data, name, value, make_new_line);
+    }
+
     inline void WriteGuid(int quad_count, const std::string& name, const std::string& guid, bool make_new_line = true)
 	{
 		WriteSymbol('\t', quad_count);
