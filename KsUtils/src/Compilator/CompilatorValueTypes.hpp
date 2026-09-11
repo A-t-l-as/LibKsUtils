@@ -62,7 +62,9 @@ namespace CompilatorValueTypes
 
     constexpr char c_namespace_type_str[] = "namespace";
 
-    constexpr size_t number_of_compilator_value_types = 20;
+    constexpr char c_float_type_str[] = "float";
+
+    constexpr size_t number_of_compilator_value_types = 21;
     static const char* compilator_value_types[] =
 	{
 		c_1bitmask_type_str,
@@ -84,6 +86,7 @@ namespace CompilatorValueTypes
 		c_guid_type_str,
 		c_struct_type_str,
         c_namespace_type_str,
+        c_float_type_str,
 		""
 	};
 

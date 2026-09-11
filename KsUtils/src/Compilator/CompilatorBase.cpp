@@ -440,6 +440,13 @@ void CompilatorBase::WriteInstructionToBin
         return;
     }
 
+    // float
+    if (en_value_type == Enums::ENCompilatorValueTypes::e_float)
+    {
+        this->r_output_file_buffer.WriteValue( stof(value) );
+        return;
+    }
+
 }
 
 

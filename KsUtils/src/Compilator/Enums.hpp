@@ -51,6 +51,8 @@ namespace Enums
 
         e_namespace,
 
+        e_float,
+
 		e_invalid
 	};
 

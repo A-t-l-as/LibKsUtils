@@ -29,7 +29,7 @@ public:
 
     void InitializeHashMapOfValueTypesEnums()
     {
-        constexpr size_t number_of_value_types = 30;
+        constexpr size_t number_of_value_types = 31;
         const char* value_types[] =
             {
                 CVT::c_char_type_str,
@@ -77,6 +77,8 @@ public:
                 CVT::c_16bituniquekey_type_str,
 
                 CVT::c_namespace_type_str,
+
+                CVT::c_float_type_str,
 
                 ""
             };

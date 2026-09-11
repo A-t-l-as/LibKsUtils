@@ -59,6 +59,20 @@ namespace CppWriter
 			ss << std::endl;
 	}
 
+    inline void WriteFloatValue
+    (
+        std::stringstream& ss,
+        const std::string& name,
+        float value,
+        bool make_new_line = true
+    )
+    {
+        ss << CompilatorValueTypes::c_float_type_str << " " << name << " = " << value << ";";
+
+        if (make_new_line)
+            ss << std::endl;
+    }
+
     inline void WriteString
     (
         std::stringstream& ss,

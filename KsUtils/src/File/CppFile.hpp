@@ -46,6 +46,12 @@ public:
         CppWriter::WriteTrivialValue(this->m_stream_data, name, value, make_new_line);
 	}
 
+    inline void WriteFloatValue(int quad_cound, const std::string& name, float value, bool make_new_line = true)
+    {
+        WriteSymbol('\t', quad_cound);
+        CppWriter::WriteFloatValue(this->m_stream_data, name, value, make_new_line);
+    }
+
     template<typename Type, std::size_t Size>
     inline void WriteTrivialArray
     (
