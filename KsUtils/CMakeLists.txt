@@ -17,6 +17,7 @@ add_library(KsUtils STATIC
   src/System/MyGuid.hpp
   src/System/GuidUtils/CrossGuidStruct.hpp src/System/GuidUtils/MyGuidStruct.hpp src/System/GuidUtils/Win32GuidStruct.hpp
   src/Utils/AppConstants.hpp
+  src/Utils/MyMathUtils.hpp
 
 
 
