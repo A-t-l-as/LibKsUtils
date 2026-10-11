@@ -16,6 +16,17 @@ namespace MyMathUtils
         return a / b;
     }
 
+    template <typename T>
+    T SafeMod(T a, T b)
+    {
+        if (b == T{})
+            throw
+                std::runtime_error
+                ("Error: Division by zero (" + std::to_string(a) + "%" + std::to_string(b) + ")!");
+
+        return a % b;
+    }
+
 }
 
 
