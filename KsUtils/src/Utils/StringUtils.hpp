@@ -79,7 +79,7 @@ inline bool IsNumber(const std::string& s)
                                  s.end(), [](unsigned char c) { return !isdigit(c); }) == s.end();
 }
 
-
+/*
 inline std::vector<std::string> Tokenize(const std::string& line)
 {
     std::vector<std::string> tokens;
@@ -88,6 +88,42 @@ inline std::vector<std::string> Tokenize(const std::string& line)
     while (iss >> token) tokens.push_back(token);
     return tokens;
 }
+*/
+
+inline std::vector<std::string> Tokenize(const std::string& line)
+{
+    std::vector<std::string> tokens;
+    std::string token;
+    bool inQuotes = false;
+    bool hasToken = false; // dzieki temu "" daje pusty token zamiast zniknac
+
+    for (char c : line)
+    {
+        if (c == '"')
+        {
+            inQuotes = !inQuotes;   // cudzyslow przelacza tryb, sam nie trafia do tokenu
+            hasToken = true;
+        }
+        else if (!inQuotes && std::isspace(static_cast<unsigned char>(c)))
+        {
+            if (hasToken)
+            {
+                tokens.push_back(token);
+                token.clear();
+                hasToken = false;
+            }
+        }
+        else
+        {
+            token += c;
+            hasToken = true;
+        }
+    }
+
+    if (hasToken) tokens.push_back(token);
+    return tokens;
+}
+
 
 inline bool ToBool(std::string str)
 {
