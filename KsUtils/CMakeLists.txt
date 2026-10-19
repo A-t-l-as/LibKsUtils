@@ -18,14 +18,7 @@ add_library(KsUtils STATIC
   src/System/GuidUtils/CrossGuidStruct.hpp src/System/GuidUtils/MyGuidStruct.hpp src/System/GuidUtils/Win32GuidStruct.hpp
   src/Utils/AppConstants.hpp
   src/Utils/MyMathUtils.hpp
-
-
-
-
-
-
-
-
+  src/SerializationAndDeserialization/json.hpp
 )
 
 target_include_directories(KsUtils PUBLIC
@@ -34,3 +27,14 @@ target_include_directories(KsUtils PUBLIC
 )
 
 target_compile_definitions(KsUtils PRIVATE KSUTILS_LIBRARY)
+
+# --- No dependency on MinGW/MSYS2 DLLs ---
+# A static library does not link anything itself, so the option is INTERFACE:
+# every program that does target_link_libraries(... KsUtils)
+# automatically gets -static and links libstdc++, libgcc
+# and libwinpthread directly into the .exe.
+if(MINGW)
+    target_link_options(KsUtils INTERFACE -static)
+endif()
+
+
