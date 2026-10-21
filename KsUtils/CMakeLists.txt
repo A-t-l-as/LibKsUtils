@@ -1,24 +1,54 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.18)   # 3.18+ required by ZlibCodec
 
-project(KsUtils LANGUAGES CXX)
+project(KsUtils LANGUAGES C CXX)        # C is needed to compile zlib
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# --- ZlibCodec (zlib compression / decompression) ---
+include(${CMAKE_CURRENT_SOURCE_DIR}/third_party/ZlibCodec/cmake/ZlibCodec.cmake)
+
 add_library(KsUtils STATIC
   ksutils.hpp
   ksutils.cpp
-  src/BasicDataStructures/OrderedSet.hpp src/Compilator/CompilatorBase.cpp src/Compilator/CompilatorBase.hpp src/Compilator/CompilatorStrings.hpp src/Compilator/CompilatorValueTypes.hpp src/Compilator/Enums.hpp src/Compilator/HashMapsBase.hpp src/Console/Console.cpp src/Console/Console.hpp src/Console/MessPrinter.hpp src/Console/MessScanner.hpp src/File/BinFile.cpp src/File/BinFile.hpp src/File/MyFile.hpp src/File/OrderFileBase.hpp src/File/TextFile.hpp src/System/HybridApp.hpp src/System/IApp.hpp src/System/MySystem.hpp src/System/Platform.hpp src/Utils/BitsetUtils.hpp src/Utils/CppWriter.hpp src/Utils/Formats.hpp src/Utils/Globals.hpp src/Utils/Misc.hpp
+  src/BasicDataStructures/OrderedSet.hpp
+  src/Compilator/CompilatorBase.cpp
+  src/Compilator/CompilatorBase.hpp
+  src/Compilator/CompilatorStrings.hpp
+  src/Compilator/CompilatorValueTypes.hpp
+  src/Compilator/Enums.hpp
+  src/Compilator/HashMapsBase.hpp
+  src/Console/Console.cpp
+  src/Console/Console.hpp
+  src/Console/MessPrinter.hpp
+  src/Console/MessScanner.hpp
+  src/File/BinFile.cpp
+  src/File/BinFile.hpp
+  src/File/MyFile.hpp
+  src/File/OrderFileBase.hpp
+  src/File/TextFile.hpp
+  src/System/HybridApp.hpp
+  src/System/IApp.hpp
+  src/System/MySystem.hpp
+  src/System/Platform.hpp
+  src/Utils/BitsetUtils.hpp
+  src/Utils/CppWriter.hpp
+  src/Utils/Formats.hpp
+  src/Utils/Globals.hpp
+  src/Utils/Misc.hpp
   src/File/CppFile.hpp
   src/Compilator/SimpleCompilator.hpp
   src/BasicDataStructures/TwoTypeArray.hpp
   src/Utils/StringUtils.hpp
   src/Utils/TxtUtils.hpp
   src/System/MyGuid.hpp
-  src/System/GuidUtils/CrossGuidStruct.hpp src/System/GuidUtils/MyGuidStruct.hpp src/System/GuidUtils/Win32GuidStruct.hpp
+  src/System/GuidUtils/CrossGuidStruct.hpp
+  src/System/GuidUtils/MyGuidStruct.hpp
+  src/System/GuidUtils/Win32GuidStruct.hpp
   src/Utils/AppConstants.hpp
   src/Utils/MyMathUtils.hpp
   src/SerializationAndDeserialization/json.hpp
+  src/File/ZlibFile.hpp
 )
 
 target_include_directories(KsUtils PUBLIC
@@ -28,6 +58,10 @@ target_include_directories(KsUtils PUBLIC
 
 target_compile_definitions(KsUtils PRIVATE KSUTILS_LIBRARY)
 
+# Compiles ZlibCodec + zlib into KsUtils (no zlib1.dll, no separate zlib needed).
+# Code using KsUtils can simply #include "ZlibCodec.hpp".
+zlibcodec_add_to_target(KsUtils)
+
 # --- No dependency on MinGW/MSYS2 DLLs ---
 # A static library does not link anything itself, so the option is INTERFACE:
 # every program that does target_link_libraries(... KsUtils)
@@ -36,5 +70,3 @@ target_compile_definitions(KsUtils PRIVATE KSUTILS_LIBRARY)
 if(MINGW)
     target_link_options(KsUtils INTERFACE -static)
 endif()
-
-
